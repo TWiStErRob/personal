@@ -39,7 +39,7 @@ public class Database extends VariantDatabase {
 	@VisibleForTesting
 	public Database(Context hostContext, Resources resources) {
 		super(resources);
-		m_helper = new DatabaseOpenHelper(hostContext, NAME, 5, BuildConfig.DEBUG) {
+		m_helper = new DatabaseOpenHelper(hostContext, NAME, 6, BuildConfig.DEBUG) {
 			@Override public void onConfigure(SQLiteDatabase db) {
 				super.onConfigure(db);
 				// CONSIDER enabling auto_vacuum=INCREMENTAL as it speeds up a large delete a lot

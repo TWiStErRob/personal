@@ -673,8 +673,12 @@ CREATE VIEW Item_Path AS
 	join Category       c   ON i.category = c._id
 ;
 
-
-CREATE VIRTUAL TABLE Search USING FTS3 (
+-- FTS4 available since Android 3.0 (API 11) SQLite 3.7.4: https://www.sqlite.org/releaselog/3_7_4.html
+-- Current minimum is Android 5.0 (API 21) SQLite 3.8.6: https://www.sqlite.org/releaselog/3_8_6.html,
+-- which means "The unicode61 tokenizer is now included in FTS4 by default."
+CREATE VIRTUAL TABLE Search USING FTS4 (
+    -- https://www.twisterrob.net/blog/2023/10/sqlite-unicode61-remove-diacritics-2.html
+	tokenize=unicode61 'remove_diacritics=1',
 	name,
 	location
 );
