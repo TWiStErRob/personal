@@ -94,15 +94,15 @@ android {
 		disable.add("UnusedIds")
 	}
 	testOptions.unitTests.includeAndroidResources = true // Robolectric
-	testBuildType "debug" // CONSIDER release
+	testBuildType = "debug" // CONSIDER release
 	buildTypes {
 		release {
-			//debuggable true
-			shrinkResources true // http://tools.android.com/tech-docs/new-build-system/resource-shrinking
+			//debuggable = true
+			shrinkResources = true // http://tools.android.com/tech-docs/new-build-system/resource-shrinking
 		}
 		debug {
-			//minifyEnabled true
-			multiDexKeepProguard file('src/androidTest/multidex.pro')
+			//minifyEnabled = true
+			multiDexKeepProguard = file('src/androidTest/multidex.pro')
 		}
 	}
 	androidResources {
@@ -110,7 +110,7 @@ android {
 		def defaultIgnoreAssetsPattern = '!.svn:!.git:!.ds_store:!*.scc:.*:<dir>_*:!CVS:!thumbs.db:!picasa.ini:!*~'
 		ignoreAssetsPattern = defaultIgnoreAssetsPattern + ':!descript.ion:!*.yuml:!*.yuml.png'
 	}
-	sourceSets.test.java.srcDir 'src/test/robolectricJava'
+	sourceSets.test.java.srcDir("src/test/robolectricJava")
 }
 
 //noinspection UnnecessaryQualifiedReference

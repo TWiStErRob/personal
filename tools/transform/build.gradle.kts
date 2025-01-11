@@ -123,8 +123,7 @@ fun DependencyHandler.integrationTestImplementation(dependencyNotation: Any): De
 fun sharedIntegrationTests(dependency: ProjectDependency): ProjectDependency {
 	dependency.capabilities {
 		// See org.gradle.internal.component.external.model.ProjectDerivedCapability
-		val project = dependency.dependencyProject
-		requireCapability("${project.group}:${project.name}-shared-integration-tests")
+		requireCapability("${dependency.group}:${dependency.name}-shared-integration-tests")
 	}
 	return dependency
 }

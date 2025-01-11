@@ -11,9 +11,9 @@ repositories {
 
 configurations {
 	register("grammars") {
-		canBeConsumed(false)
-		canBeDeclared(true)
-		canBeResolved(true)
+		canBeConsumed = false
+		canBeDeclared = true
+		canBeResolved = true
 	}
 }
 
@@ -35,7 +35,7 @@ def downloadGrammars = tasks.register("downloadGrammars", Copy.class) {
 			.withPathSensitivity(PathSensitivity.NONE)
 	doLast {
 		// Not a separate task, because it changes the output of this task, so caching wouldn't work.
-		exec {
+		providers.exec {
 			workingDir(dir)
 			executable("git")
 			args("apply", "SQLiteParser.g4.patch")
